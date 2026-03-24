@@ -6,7 +6,7 @@ Developed CyberVenture, a Python game with four levels and interactive sub-level
 
 ## 🚀 Live Demo
 Play the game here:  
-https://jai-12-cpu.github.io/Cyberventure/Frontend/
+https://jai-12-cpu.github.io/Cyberventure/
 
 ---
 
@@ -57,7 +57,7 @@ Cyberventure/
 
 ### 🌐 Play Online
 Simply open:  
-https://jai-12-cpu.github.io/Cyberventure/Frontend/
+https://jai-12-cpu.github.io/Cyberventure/
 
 ---
 
