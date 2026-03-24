@@ -1,0 +1,11 @@
+CREATE DATABASE CVDB;
+
+USE CVDB;
+
+CREATE TABLE Accounts (
+    user VARCHAR(50) PRIMARY KEY,
+    pwd VARCHAR(50) NOT NULL,
+    Lv INT DEFAULT 1,
+    subLv INT DEFAULT 1,
+    lives INT DEFAULT 3
+);
