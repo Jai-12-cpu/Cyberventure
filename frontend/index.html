@@ -1,70 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberVenture — Save Your Account</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberVenture — Save Your Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 <div class="grid-bg"></div>
 
-<!-- Loading Screen -->
 <div id="screen-loading" class="screen active">
-  <div class="ascii-logo glitch">CYBERVENture</div>
+  <div class="ascii-logo glitch">
+  ____      _                                _                  
+ / ___|   _| |__   ___ _ ____   _____ _ __ | |_ _   _ _ __ ___ 
+| |  | | | | '_ \ / _ \ '__\ \ / / _ \ '_ \| __| | | | '__/ _ \
+| |__| |_| | |_) |  __/ |   \ V /  __/ | | | |_| |_| | | |  __/
+ \____\__, |_.__/ \___|_|    \_/ \___|_| |_|\__|\__,_|_|  \___|
+      |___/                                                      </div>
   <div class="loading-bar-wrap">
     <div class="loading-bar"><div class="loading-bar-fill"></div></div>
     <div class="loading-text">INITIALIZING SYSTEM...</div>
   </div>
 </div>
 
-<!-- AUTH -->
 <div id="screen-auth" class="screen">
+  <div class="ascii-logo glitch" style="margin-bottom:20px;">
+  ... (ASCII LOGO) ...
+  </div>
   <div class="panel">
     <div id="auth-msg"></div>
-
     <div id="auth-login">
       <h2>// Access Terminal</h2>
-      <input type="text" id="login-user" placeholder="username">
-      <input type="password" id="login-pwd" placeholder="password">
-
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="enter username" autocomplete="off">
+      <label>Password</label>
+      <input type="password" id="login-pwd" placeholder="••••••••">
       <div class="btn-row">
         <button class="btn" onclick="doLogin()">Login</button>
-        <button class="btn" onclick="showRegister()">Register</button>
+        <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="showRegister()">Register</button>
       </div>
     </div>
-
     <div id="auth-register" style="display:none">
       <h2>// Create Account</h2>
-      <input type="text" id="reg-user" placeholder="username">
-      <input type="password" id="reg-pwd" placeholder="password">
-
+      <label>Username</label>
+      <input type="text" id="reg-user" placeholder="choose username" autocomplete="off">
+      <label>Password</label>
+      <input type="password" id="reg-pwd" placeholder="choose password">
       <div class="btn-row">
         <button class="btn btn-accent" onclick="doRegister()">Create</button>
-        <button class="btn" onclick="showLogin()">Back</button>
+        <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="showLogin()">Back</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- HUB -->
 <div id="screen-hub" class="screen">
   <div class="hud">
-    <span id="hud-user"></span>
-    <span id="hud-level"></span>
+    <span class="hud-user" id="hud-user">USER: —</span>
+    <span class="hud-level" id="hud-level">LV 1 — SUB 1</span>
+    <div class="lives" id="hud-lives">
+      <span class="heart" id="h1">❤️</span>
+      <span class="heart" id="h2">❤️</span>
+      <span class="heart" id="h3">❤️</span>
+    </div>
   </div>
-
-  <div class="panel">
-    <button class="btn btn-accent" onclick="startCurrentLevel()">PLAY</button>
-    <button class="btn btn-danger" onclick="doLogout()">LOGOUT</button>
+  <div class="panel panel-wide">
+    <div class="msg msg-warn" style="text-align:center; font-size:0.85rem; letter-spacing:1px;">
+      ⚠ YOUR ACCOUNT HAS BEEN HACKED. COMPLETE ALL LEVELS TO SAVE IT.
+    </div>
+    <h2 style="text-align:center; margin-top:16px;">// Mission Board</h2>
+    <div class="level-map" id="level-map"></div>
+    <hr>
+    <div style="text-align:center; margin-top:8px;">
+      <div class="notif" id="hub-notif">Select a level to begin</div>
+      <div style="margin-top:14px;">
+        <button class="btn btn-accent" onclick="startCurrentLevel()" style="margin-right:10px;">▶ Play Current Level</button>
+        <button class="btn btn-danger" onclick="doLogout()">Logout</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<script src="script.js"></script>
+<div id="screen-numguess" class="screen">
+  <div class="hud"><span class="hud-user" id="ng-user"></span><span class="hud-level">NUMBER GUESS</span><div class="lives" id="ng-lives"></div></div>
+  <div class="panel panel-wide">
+    <h2>// Guess The Number</h2>
+    <div id="ng-instructions" class="sub-text" style="margin-bottom:12px;"></div>
+    <div class="clue-display" id="ng-range">Guess: 1 – ?</div>
+    <div class="hint-display" id="ng-hint">—</div>
+    <div class="guess-count" id="ng-guesses"></div>
+    <label>Your Guess</label>
+    <input type="number" id="ng-input" placeholder="enter number">
+    <div id="ng-msg"></div>
+    <div class="btn-row">
+      <button class="btn btn-accent" onclick="submitGuess()">Submit Guess</button>
+      <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="goHub()">Exit</button>
+    </div>
+  </div>
+</div>
+
+<div id="screen-word" class="screen">
+  <div class="hud"><span class="hud-user" id="wd-user"></span><span class="hud-level">UNJUMBLE</span><div class="lives" id="wd-lives"></div></div>
+  <div class="panel panel-wide">
+    <h2>// Unjumble The Word</h2>
+    <div class="jumbled-word" id="wd-jumbled"></div>
+    <div class="word-hint" id="wd-hint"></div>
+    <label>Your Answer</label>
+    <input type="text" id="wd-input" placeholder="type the word" style="text-align:center; letter-spacing:3px; font-size:1.2rem;">
+    <div id="wd-msg"></div>
+    <div class="btn-row">
+      <button class="btn btn-accent" onclick="submitWord()">Submit</button>
+      <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="goHub()">Exit</button>
+    </div>
+  </div>
+</div>
+
+<div id="screen-24" class="screen">
+  <div class="hud"><span class="hud-user" id="g24-user"></span><span class="hud-level">GAME 24</span><div class="lives" id="g24-lives"></div></div>
+  <div class="panel panel-wide">
+    <h2>// Make 24</h2>
+    <p class="sub-text" style="margin-bottom:12px;">Use all 4 numbers with +, -, *, / (and brackets) to make 24.</p>
+    <div class="target-24">24</div>
+    <div class="numbers-24" id="g24-nums"></div>
+    <div class="op-btns" id="g24-num-btns"></div>
+    <div class="op-btns">
+      <button class="op-btn" onclick="addToFormula('+')">+</button>
+      <button class="op-btn" onclick="addToFormula('-')">−</button>
+      <button class="op-btn" onclick="addToFormula('*')">×</button>
+      <button class="op-btn" onclick="addToFormula('/')">÷</button>
+      <button class="op-btn" onclick="addToFormula('(')">(</button>
+      <button class="op-btn" onclick="addToFormula(')')">)</button>
+      <button class="op-btn" onclick="clearFormula()" style="color:var(--glow2);border-color:var(--glow2)">CLR</button>
+      <button class="op-btn" onclick="backspaceFormula()" style="color:var(--warn);border-color:var(--warn)">⌫</button>
+    </div>
+    <label>Formula</label>
+    <input type="text" id="g24-formula" class="formula-input" placeholder="e.g.  (8 - 2) × (9 - 5)" readonly>
+    <div id="g24-msg"></div>
+    <div class="btn-row" style="margin-top:8px;">
+      <button class="btn btn-accent" onclick="submit24()">Submit</button>
+      <button class="btn" onclick="clearFormula()">Clear</button>
+      <button class="btn" style="border-color:var(--muted);color:var(--muted)" onclick="goHub()">Exit</button>
+    </div>
+  </div>
+</div>
+
+<div id="screen-cats" class="screen">
+  <div class="hud"><span class="hud-user" id="cf-user"></span><span class="hud-level">CAT FINDER</span><div class="lives" id="cf-lives"></div></div>
+  <div class="panel panel-wide">
+    <h2>// Find The Cats 🐱</h2>
+    <div id="cf-memorize-phase">
+      <p class="sub-text" style="margin-bottom:10px;">Memorize the cat positions!</p>
+      <div class="memorize-bar"><div class="memorize-fill" id="cf-bar"></div></div>
+      <div class="sub-text" id="cf-timer-text" style="text-align:center;"></div>
+      <div class="cat-grid-wrap"><div class="cat-grid" id="cf-grid-mem"></div></div>
+    </div>
+    <div id="cf-guess-phase" style="display:none">
+      <p class="sub-text" style="margin-bottom:10px;">Click all the cards with cats!</p>
+      <div id="cf-msg"></div>
+      <div class="cat-grid-wrap"><div class="cat-grid" id="cf-grid-guess"></div></div>
+      <div class="notif" id="cf-progress"></div>
+    </div>
+  </div>
+</div>
+
+<div class="countdown-overlay" id="countdown-overlay">
+  <div class="countdown-num" id="countdown-num"></div>
+</div>
+
+<div id="screen-result" class="screen">
+  <div class="panel" style="text-align:center; max-width:520px;">
+    <div class="big-msg" id="result-title"></div>
+    <div id="result-msg" style="font-family:var(--font-mono);font-size:0.85rem;color:var(--muted);margin-bottom:24px;line-height:1.6;"></div>
+    <div class="btn-row" style="justify-content:center;" id="result-btns"></div>
+  </div>
+</div>
+
+<div id="screen-victory" class="screen">
+  <div class="panel" style="text-align:center; max-width:560px;">
+    <div style="font-size:3rem;margin-bottom:10px;">🏆</div>
+    <div class="big-msg win">ACCOUNT SAVED</div>
+    <button class="btn btn-accent" onclick="doLogout()">Return to Terminal</button>
+  </div>
+</div>
 </body>
 </html>
