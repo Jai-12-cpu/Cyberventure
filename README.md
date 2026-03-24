@@ -1,6 +1,6 @@
 # 🎮 CyberVenture Game
 
-An interactive browser-based game built using HTML, with supporting Python scripts and MySQL for local execution and data handling.
+Developed CyberVenture, a Python game with four levels and interactive sub-levels designed to challenge memory and problem-solving skills. Sub-levels include Number Guess, Unjumble, Game 24, and Cat Finder, each testing the player’s logic, calculation, or memory. The project aims to promote awareness about cyber safety and the consequences of neglecting good online practices.
 
 ---
 
@@ -35,11 +35,20 @@ This project is ideal for beginners exploring game development, databases, and w
 
 ## 📂 Project Structure
 
-cyberventure-game/  
-│── index.html        # Main game file (browser playable)  
-│── game.py           # Core game logic in Python  
-│── main1.py          # Entry point for Python execution  
-│── database.sql      # (Optional) MySQL schema / queries  
+Cyberventure/
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── backend/
+│   └── main.py
+│
+├── database/
+│   └── schema.sql
+│
+└── README.md
 
 ---
 
@@ -55,13 +64,26 @@ https://jai-12-cpu.github.io/Cyberventure/
 
 1. Install Python  
 2. Install MySQL and start the server  
+installation (Local Setup)
 3. Clone the repository:
-   ```bash
-   git clone https://github.com/Jai-12-cpu/cyberventure-game.git
-   cd cyberventure-game
-   python main1.py
+```
+git clone https://github.com/Jai-12-cpu/Cyberventure.git
+```
+4. Navigate to the folder:
+```
+cd Cyberventure
+```
+5. Run Python scripts (if applicable):
+```
+python main.py
+```
+6. Open `index.html` in your browser
+---
+
+## 🎥 Preview
+   <img width="2541" height="1236" alt="image" src="https://github.com/user-attachments/assets/1e51512d-5b9d-4ad6-99de-ee94587176f4" />
    
-Set up the database:
-Create a database in MySQL
-Import database.sql (if included)
-   
+   <img width="2557" height="1230" alt="image" src="https://github.com/user-attachments/assets/42801515-7823-43cd-9633-f4227ddf0d28" />
+
+## 📄 License
+This project is licensed under the MIT License.
