@@ -8,8 +8,6 @@ An interactive browser-based game built using HTML, with supporting Python scrip
 Play the game here:  
 https://Jai-12-cpu.github.io/cyberventure-game/
 
-> ⚠️ Note: For the live link to work properly, ensure your main HTML file is named `index.html`.
-
 ---
 
 ## 📌 Project Overview
