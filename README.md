@@ -13,10 +13,11 @@ https://Jai-12-cpu.github.io/cyberventure-game/
 ## 📌 Project Overview
 
 CyberVenture is a simple yet engaging game project designed to demonstrate:
-- Frontend development using HTML
-- Basic game structure and interaction
-- Integration of logic through Python (for offline/local runs)
-- Deployment using GitHub Pages
+
+- Frontend development using HTML  
+- Basic game structure and interaction  
+- Integration of logic through Python (for offline/local runs)  
+- Deployment using GitHub Pages  
 
 This project is ideal for beginners exploring game development and web hosting.
 
@@ -24,9 +25,9 @@ This project is ideal for beginners exploring game development and web hosting.
 
 ## 🛠️ Technologies Used
 
-- HTML (for game interface)
-- Python (for logic and backend experimentation)
-- GitHub Pages (for hosting the web version)
+- HTML (for game interface)  
+- Python (for logic and backend experimentation)  
+- GitHub Pages (for hosting the web version)  
 
 ---
 
@@ -42,14 +43,16 @@ cyberventure-game/
 ## ▶️ How to Run
 
 ### 🌐 Play Online
-Simply open the live link:
+Simply open:  
 https://Jai-12-cpu.github.io/cyberventure-game/
 
 ---
 
 ### 💻 Run Locally (Python Version)
 
-1. Install Python on your system  
-2. Clone this repository:
+1. Install Python  
+2. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/cyberventure-game.git
+   git clone https://github.com/Jai-12-cpu/cyberventure-game.git
+   cd cyberventure-game
+   python main1.py
