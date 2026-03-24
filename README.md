@@ -85,5 +85,4 @@ python main.py
    
    <img width="2557" height="1230" alt="image" src="https://github.com/user-attachments/assets/42801515-7823-43cd-9633-f4227ddf0d28" />
 
-## 📄 License
-This project is licensed under the MIT License.
+
