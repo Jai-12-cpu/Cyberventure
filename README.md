@@ -6,7 +6,7 @@ An interactive browser-based game built using HTML, with supporting Python scrip
 
 ## 🚀 Live Demo
 Play the game here:  
-https://Jai-12-cpu.github.io/cyberventure-game/
+https://jai-12-cpu.github.io/Cyberventure/
 
 ---
 
@@ -47,7 +47,7 @@ cyberventure-game/
 
 ### 🌐 Play Online
 Simply open:  
-https://Jai-12-cpu.github.io/cyberventure-game/
+https://jai-12-cpu.github.io/Cyberventure/
 
 ---
 
