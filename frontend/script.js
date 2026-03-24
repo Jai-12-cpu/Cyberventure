@@ -1,77 +1,65 @@
-const DB_KEY = "cyberventure_db";
+// --- STATE MANAGEMENT ---
+const DB_KEY = 'cyberventure_db';
 let currentUser = null;
 
-// ---------------- STORAGE ----------------
-function loadDB(){
-  return JSON.parse(localStorage.getItem(DB_KEY)) || {};
-}
-function saveDB(db){
-  localStorage.setItem(DB_KEY, JSON.stringify(db));
-}
-function setUser(u,data){
-  const db = loadDB();
-  db[u]=data;
-  saveDB(db);
-}
-function getUser(u){
-  return loadDB()[u];
+function loadDB() { return JSON.parse(localStorage.getItem(DB_KEY)) || {}; }
+function saveDB(db) { localStorage.setItem(DB_KEY, JSON.stringify(db)); }
+function getUser(username) { return loadDB()[username] || null; }
+
+// --- NAVIGATION ---
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
-// ---------------- SCREEN ----------------
-function showScreen(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-// ---------------- AUTH ----------------
-function showLogin(){
-  document.getElementById("auth-login").style.display="";
-  document.getElementById("auth-register").style.display="none";
-}
-
-function showRegister(){
-  document.getElementById("auth-login").style.display="none";
-  document.getElementById("auth-register").style.display="";
-}
-
-function doRegister(){
-  const u=document.getElementById("reg-user").value;
-  const p=document.getElementById("reg-pwd").value;
-  setUser(u,{pwd:p,lv:1});
-  currentUser=u;
-  goHub();
-}
-
-function doLogin(){
-  const u=document.getElementById("login-user").value;
-  const p=document.getElementById("login-pwd").value;
-  const data=getUser(u);
-
-  if(!data || data.pwd!==p){
-    alert("wrong login");
-    return;
+// --- AUTHENTICATION ---
+function doLogin() {
+  const user = document.getElementById('login-user').value.trim();
+  const data = getUser(user);
+  if (data && data.pwd === document.getElementById('login-pwd').value) {
+    currentUser = user;
+    goHub();
   }
-  currentUser=u;
-  goHub();
 }
 
-function doLogout(){
-  currentUser=null;
-  showScreen("screen-auth");
+// --- HUB & PROGRESSION ---
+function goHub() {
+  const u = getUser(currentUser);
+  showScreen('screen-hub');
+  // Logic to update HUD and Level Map
 }
 
-// ---------------- HUB ----------------
-function goHub(){
-  showScreen("screen-hub");
-  document.getElementById("hud-user").innerText="USER: "+currentUser;
-  document.getElementById("hud-level").innerText="LEVEL 1";
+function incrLevel(username) {
+  const u = getUser(username);
+  if (u.subLv < 4) u.subLv++;
+  else if (u.lv < 4) { u.lv++; u.subLv = 1; }
+  saveDB({ ...loadDB(), [username]: u });
 }
 
-function startCurrentLevel(){
-  alert("Game starts here (your logic already exists)");
+// --- MINI GAMES ---
+
+// 1. Number Guess
+function startNumGuess(diff) {
+  // Logic for random number selection based on difficulty
 }
 
-// ---------------- INIT ----------------
-setTimeout(()=>{
-  showScreen("screen-auth");
-},1500);
+// 2. Word Unjumble
+function startWord(diff) {
+  // Uses the WORDS object to pick a word and shuffle it
+}
+
+// 3. Game 24
+function submit24() {
+  const formula = document.getElementById('g24-formula').value;
+  try {
+    if (eval(formula) === 24) { /* Win */ }
+  } catch (e) { /* Error */ }
+}
+
+// 4. Cat Finder
+function startCatFinder(diff) {
+  // Logic for grid generation and cat placement
+}
+
+// Initialize
+setTimeout(() => showScreen('screen-auth'), 2000);
