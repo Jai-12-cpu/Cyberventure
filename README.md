@@ -37,10 +37,10 @@ This project is ideal for beginners exploring game development, databases, and w
 
 Cyberventure/
 │
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
+├──index.html
+├──script.js 
+├──style.css
+│   
 │
 ├── backend/
 │   └── main.py
