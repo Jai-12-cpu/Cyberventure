@@ -6,7 +6,7 @@ from game import *
 con = sqltor.connect(
     host='localhost',
     user='root',
-    passwd='jai*1204',   
+    passwd='_____',   
     database='CVDB'
 )
 cur = con.cursor()
