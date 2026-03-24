@@ -1,13 +1,44 @@
-// CyberVenture Game Logic
+:root{
+  --bg:#020810;
+  --text:#c8e8ff;
+  --glow:#00d4ff;
+  --accent:#00ff9f;
+  --danger:#ff003c;
+}
 
-const DB_KEY = 'cyberventure_db';
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:sans-serif;
+}
 
-// =====================
-// PASTE ALL YOUR JS HERE (from <script> tag)
-// =====================
+.screen{display:none;min-height:100vh;justify-content:center;align-items:center}
+.screen.active{display:flex;flex-direction:column}
 
+.panel{
+  padding:20px;
+  border:1px solid var(--glow);
+  width:300px;
+}
 
-// Safe init
-window.onload = () => {
-  // keep your loading screen logic here
-};
+.btn{
+  padding:10px;
+  margin:5px;
+  border:1px solid var(--glow);
+  background:transparent;
+  color:var(--glow);
+  cursor:pointer;
+}
+
+.btn-accent{border-color:var(--accent);color:var(--accent)}
+.btn-danger{border-color:var(--danger);color:var(--danger)}
+
+input{
+  width:100%;
+  margin:5px 0;
+  padding:8px;
+  background:#000;
+  color:var(--text);
+  border:1px solid var(--glow);
+}
