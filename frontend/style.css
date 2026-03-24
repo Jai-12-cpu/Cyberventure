@@ -1,1 +1,13 @@
+// CyberVenture Game Logic
 
+const DB_KEY = 'cyberventure_db';
+
+// =====================
+// PASTE ALL YOUR JS HERE (from <script> tag)
+// =====================
+
+
+// Safe init
+window.onload = () => {
+  // keep your loading screen logic here
+};
