@@ -3,18 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberVenture</title>
+<title>CyberVenture — Save Your Account</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <div class="grid-bg"></div>
 
-<!-- PASTE YOUR FULL HTML CONTENT HERE (NO <style>, NO <script>) -->
+<!-- Loading Screen -->
+<div id="screen-loading" class="screen active">
+  <div class="ascii-logo glitch">CYBERVENture</div>
+  <div class="loading-bar-wrap">
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    <div class="loading-text">INITIALIZING SYSTEM...</div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div id="screen-auth" class="screen">
+  <div class="panel">
+    <div id="auth-msg"></div>
+
+    <div id="auth-login">
+      <h2>// Access Terminal</h2>
+      <input type="text" id="login-user" placeholder="username">
+      <input type="password" id="login-pwd" placeholder="password">
+
+      <div class="btn-row">
+        <button class="btn" onclick="doLogin()">Login</button>
+        <button class="btn" onclick="showRegister()">Register</button>
+      </div>
+    </div>
+
+    <div id="auth-register" style="display:none">
+      <h2>// Create Account</h2>
+      <input type="text" id="reg-user" placeholder="username">
+      <input type="password" id="reg-pwd" placeholder="password">
+
+      <div class="btn-row">
+        <button class="btn btn-accent" onclick="doRegister()">Create</button>
+        <button class="btn" onclick="showLogin()">Back</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HUB -->
+<div id="screen-hub" class="screen">
+  <div class="hud">
+    <span id="hud-user"></span>
+    <span id="hud-level"></span>
+  </div>
+
+  <div class="panel">
+    <button class="btn btn-accent" onclick="startCurrentLevel()">PLAY</button>
+    <button class="btn btn-danger" onclick="doLogout()">LOGOUT</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
